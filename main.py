@@ -112,26 +112,36 @@ def filterAndCompareResultAndInput(attemptedInput: str, inputResult: str):
     })
 
 os.system("clear")
+
+wordOutput = ""
+for alphabet in possibleWords.keys():
+    wordOutput += f"{possibleWords[alphabet] + alphabet}\x1b[0m"
+wordOutput += "\x1b[0m"
+
 columnSize = os.get_terminal_size().columns
 print("╷ ╷ ┌─┐ ┌┐  ┌─╮ ╷   ┌─╴     ┌─╴ ┌─┐ ╷   ╷ ╷ ┌─╴ ┌┐  ".center(columnSize))
 print("│││ │ │ ├┴┐ │ │ │   ├─╴     └─┐ │ │ │   │┌┘ ├─╴ ├┴┐ ".center(columnSize))
 print("└┴┘ └─┘ ╵ ╵ └─╯ └─╴ └─╴     ╶─┘ └─┘ └─╴ └┘  └─╴ ╵ ╵ ".center(columnSize))
-print("Creator: Sh1d0re / License: GPL-3.0 / Language: Python".center(columnSize))
+print("\x1b[3mCreator: Sh1d0re / License: GPL-3.0 / Language: Python".center(columnSize))
 splitLines()
+print(wordOutput + "Enter \x1b[100m1: BLACK\x1b[0m, \x1b[43m2: YELLOW\x1b[0m, \x1b[42m3: GREEN\x1b[0m".rjust(os.get_terminal_size().columns+2))
+splitLines()
+print(" - Top 5 Efficient First Attempts - ".center(os.get_terminal_size().columns))
+print(f"\x1b[3mslate - [ 1432 ] / sauce - [ 1406 ] / slice - [ 1403 ] / shale - [ 1399 ] / saute - [ 1395 ]\x1b[0m")
 for trial in range(6):
     while True:
         attemptedInput = input("Input attempted input: ")
         if checkIfValidAttempt(attemptedInput):
             break
         else:
-            print("\x1b[3m[!] Input was not valid! Only inputs thats are len > 5 and a word is acceptable\x1b[0m")
+            print("\x1b[31;3m[!] Input was not valid! Only inputs thats are len > 5 and a word is acceptable\x1b[0m")
 
     while True:
         result = input("Input result of input: ")
         if checkIfValidResult(result):
             break
         else:
-            print("[!] Input was not valid! Only inputs of 1 or 2 or 3 is acceptable")
+            print("\x1b[31;3m[!] Input was not valid! Only inputs of 1 or 2 or 3 is acceptable\x1b[0m")
 
     os.system("clear")
 
@@ -149,6 +159,8 @@ for trial in range(6):
 
     print(wordOutput + "Enter \x1b[100m1: BLACK\x1b[0m, \x1b[43m2: YELLOW\x1b[0m, \x1b[42m3: GREEN\x1b[0m".rjust(os.get_terminal_size().columns+2))
     splitLines()
+    print(" - All Candidates - ".center(os.get_terminal_size().columns))
     print(str(wordsDB).replace("'", ""))
     splitLines()
-    print(findBestAttempt(10))
+    print(" - Top 10 Efficient Attempts - ".center(os.get_terminal_size().columns))
+    print(str(findBestAttempt(10)).replace("'", ""))
