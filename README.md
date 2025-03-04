@@ -1,5 +1,8 @@
 # Solving Wordle (Literaly)
 
+## Usage
+
+
 ## Discovering the strategy
 ### Whats the most convinient first attempt you can make in wordle?
 > What is the most used letter in wordle? Here is a dictionary of how many letters exist in the wordle word database:
