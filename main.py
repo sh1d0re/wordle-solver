@@ -130,14 +130,14 @@ print(" - Top 5 Efficient First Attempts - ".center(os.get_terminal_size().colum
 print(f"\x1b[3mslate - [ 1432 ] / sauce - [ 1406 ] / slice - [ 1403 ] / shale - [ 1399 ] / saute - [ 1395 ]\x1b[0m")
 for trial in range(6):
     while True:
-        attemptedInput = input("Input attempted input: ")
+        attemptedInput = input("Input attempted input: ").lower()
         if checkIfValidAttempt(attemptedInput):
             break
         else:
             print("\x1b[31;3m[!] Input was not valid! Only inputs thats are len > 5 and a word is acceptable\x1b[0m")
 
     while True:
-        result = input("Input result of input: ")
+        result = input("Input result of input: ").lower()
         if checkIfValidResult(result):
             break
         else:
