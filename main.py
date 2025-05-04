@@ -6,6 +6,11 @@ possibleWords = {}
 for alphabet in list("abcdefghijklmnopqrstuvwxyz"):
     possibleWords[alphabet] = "\x1b[40m"
 
+class debug:
+    def showAllVariables(initialVariables:dict):
+        ignoreVars = ["__name__", "__doc__", "__package__", "__loader__", "__spec__", "__annotations__", "__builtins__", "__file__", "__cached__", "showAllVariables"]
+        print("".join([f"""\x1b[30;47;1m {variable}: \x1b[30;47m{initialVariables[variable]} \x1b[0m """ for variable in list(initialVariables.keys()) if not variable in ignoreVars]))
+
 def splitLines():
     print("".join(["─" for i in range(os.get_terminal_size().columns)]))
 
@@ -26,6 +31,7 @@ def removeInvalidWords(invalidLetters: list, includedWords: str, matchedWords: s
             if len(matchedWords) > i:
                 if (not matchedWords[i] == "-") and (not word[i] == matchedWords[i]):
                     remove = True
+            debug.showAllVariables(vars())
             if remove:
                 unmatchingWords.append(word)
                 break
